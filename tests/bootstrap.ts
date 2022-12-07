@@ -47,7 +47,7 @@ export const reporters: Required<Config>['reporters'] = [specReporter()]
 |
 */
 export const runnerHooks: Pick<Required<Config>, 'setup' | 'teardown'> = {
-  setup: [() => TestUtils.ace().loadCommands()],
+  setup: [async () => await TestUtils.ace().loadCommands()],
   teardown: [],
 }
 
@@ -64,6 +64,6 @@ export const runnerHooks: Pick<Required<Config>, 'setup' | 'teardown'> = {
 */
 export const configureSuite: Required<Config>['configureSuite'] = (suite) => {
   if (suite.name === 'functional') {
-    suite.setup(() => TestUtils.httpServer().start())
+    suite.setup(async () => await TestUtils.httpServer().start())
   }
 }

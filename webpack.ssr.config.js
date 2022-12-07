@@ -5,21 +5,20 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
   Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev')
 }
 
-Encore.setOutputPath('./public/assets')
-Encore.setPublicPath('/assets')
+Encore.setOutputPath('./inertia/ssr')
+Encore.setPublicPath('/ssr')
 
 Encore.addAliases({ '~': resolve(__dirname, 'resources', 'js') })
 
-Encore.addEntry('app', './resources/js/app.tsx')
+Encore.addEntry('ssr', './resources/js/ssr.tsx')
 
 Encore.enableReactPreset()
 Encore.enableBabelTypeScriptPreset()
 Encore.splitEntryChunks()
-Encore.enableSingleRuntimeChunk()
+Encore.disableSingleRuntimeChunk()
 
 Encore.enablePostCssLoader()
 
-Encore.enableSourceMaps(!Encore.isProduction())
 Encore.enableVersioning(Encore.isProduction())
 
 Encore.cleanupOutputBeforeBuild()
@@ -49,5 +48,13 @@ config.infrastructureLogging = {
   level: 'warn',
 }
 config.stats = 'errors-warnings'
+config.externals = [require('webpack-node-externals')()]
+config.externalsPresets = { node: true }
+config.output = {
+  libraryTarget: 'commonjs2',
+  filename: 'ssr.js',
+  path: join(__dirname, './inertia/ssr'),
+}
+config.experiments = { outputModule: true }
 
 module.exports = config

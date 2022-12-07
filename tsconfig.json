@@ -6,11 +6,15 @@
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "paths": {
       "App/*": ["./app/*"],
       "Config/*": ["./config/*"],
       "Contracts/*": ["./contracts/*"],
-      "Database/*": ["./database/*"]
+      "Database/*": ["./database/*"],
+      "~/*": ["./resources/js/*"]
     },
     "types": [
       "@adonisjs/core",
@@ -18,7 +22,8 @@
       "@adonisjs/session",
       "@adonisjs/view",
       "@adonisjs/shield",
-      "@japa/preset-adonis/build/adonis-typings"
+      "@japa/preset-adonis/build/adonis-typings",
+      "@eidellev/inertia-adonisjs"
     ]
   }
 }
