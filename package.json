@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "node ace serve --watch",
+    "dev:ssr": "node ace ssr:watch",
     "build": "node ace build --production",
+    "build:ssr": "node ace ssr:build",
     "start": "node server.js",
     "lint": "eslint . --ext=.ts,.tsx --fix",
     "format": "prettier --write ."
