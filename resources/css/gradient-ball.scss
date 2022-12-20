@@ -1,0 +1,27 @@
+@use 'sass:math';
+
+$ball-size: 600px;
+
+@mixin ball($deg) {
+  position: absolute;
+  width: $ball-size;
+  height: $ball-size;
+  border-radius: 15rem;
+  background: linear-gradient($deg, #341D65 0%, rgba(52, 29, 101, 0) 100%), radial-gradient(94.51% 124.88% at 94.32% 94.43%, rgba(65, 244, 255, 0.78) 0%, rgba(128, 217, 255, 0.78) 46.52%, rgba(65, 198, 255, 0) 100%), linear-gradient(41deg, #FFFCE6 4.33%, rgba(255, 252, 230, 0) 73.7%);
+  background-blend-mode: normal, normal, normal, normal, normal, normal;
+  filter: blur(110px);
+}
+
+.home {
+  .gradient-ball-1 {
+    @include ball(180deg);
+    top: 45%;
+    left: math.div($ball-size, -2.45);
+  }
+  
+  .gradient-ball-2 {
+    @include ball(75deg);
+    top: 25%;
+    right: math.div($ball-size, -2.2);
+  }
+}

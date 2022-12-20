@@ -1,7 +1,7 @@
+import { Page, PageProps } from '@inertiajs/inertia'
+import { createInertiaApp } from '@inertiajs/inertia-react'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
-import { createInertiaApp } from '@inertiajs/inertia-react'
-import { Page, PageProps } from '@inertiajs/inertia'
 
 const render = async (page: Page<PageProps>) =>
   await createInertiaApp({

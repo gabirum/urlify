@@ -1,9 +1,9 @@
-import React from 'react'
-import { hydrateRoot } from 'react-dom/client'
 import { createInertiaApp } from '@inertiajs/inertia-react'
 import { InertiaProgress } from '@inertiajs/progress'
+import React from 'react'
+import { hydrateRoot } from 'react-dom/client'
 
-import '../css/app.css'
+import '../css/app.scss'
 
 InertiaProgress.init()
 
