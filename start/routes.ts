@@ -1,3 +1,8 @@
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.inertia('/', 'Home/Index')
+Route.get('/:id', 'LinkRedirectsController.show').as('link_redirect')
+
+Route.group(() => {
+  Route.inertia('/', 'Home/Index')
+  Route.resource('links', 'LinksController')
+}).middleware(['inertia'])

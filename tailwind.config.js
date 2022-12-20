@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./resources/views/**/*.edge', './resources/js/**/*.tsx'],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ['Poppins', 'sans-serif'],
+      display: ['Syne', 'sans-serif'],
+      input: ['Outfit', 'sans-serif'],
+    },
   },
   plugins: [],
 }

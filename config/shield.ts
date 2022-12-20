@@ -4,7 +4,7 @@
  * Feel free to let us know via PR, if you find something broken in this config
  * file.
  */
-
+import Application from '@ioc:Adonis/Core/Application'
 import { ShieldConfig } from '@ioc:Adonis/Addons/Shield'
 
 /*
@@ -25,7 +25,7 @@ export const csp: ShieldConfig['csp'] = {
   | The CSP rules are disabled by default for seamless onboarding.
   |
   */
-  enabled: false,
+  enabled: Application.inProduction,
 
   /*
   |--------------------------------------------------------------------------
@@ -43,7 +43,10 @@ export const csp: ShieldConfig['csp'] = {
   | }
   |
   */
-  directives: {},
+  directives: {
+    defaultSrc: ["'self'", 'fonts.googleapis.com', 'fonts.gstatic.com'],
+    frameAncestors: ["'none'"],
+  },
 
   /*
   |--------------------------------------------------------------------------
@@ -232,5 +235,5 @@ export const hsts: ShieldConfig['hsts'] = {
 |
 */
 export const contentTypeSniffing: ShieldConfig['contentTypeSniffing'] = {
-  enabled: true,
+  enabled: false,
 }

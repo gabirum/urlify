@@ -17,6 +17,7 @@ Encore.enableBabelTypeScriptPreset()
 Encore.splitEntryChunks()
 Encore.disableSingleRuntimeChunk()
 
+Encore.enableSassLoader()
 Encore.enablePostCssLoader()
 
 Encore.enableVersioning(Encore.isProduction())
