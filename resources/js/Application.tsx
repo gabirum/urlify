@@ -1,24 +1,19 @@
-import React, { ComponentType, FC, ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { SSRProvider } from 'react-aria'
 
 interface ApplicationProps {
+  getLayout?: (page: ReactNode) => ReactNode
   children: ReactNode
 }
 
-export const Application: FC<ApplicationProps> = ({ children }) => (
-  <SSRProvider>
-    <div className='max-w-full min-h-screen overflow-x-hidden bg-slate-200 text-neutral-800 dark:bg-gray-900 dark:text-neutral-100'>
-      {children}
-    </div>
-  </SSRProvider>
-)
+export const Application: FC<ApplicationProps> = ({ children, getLayout }) => {
+  getLayout ??= page => page
 
-export function withApplication<P extends JSX.IntrinsicAttributes>(Component: ComponentType<P>) {
-  const ComponentWithApplication: FC<P> = props => (
-    <Application>
-      <Component {...props} />
-    </Application>
+  return (
+    <SSRProvider>
+      <div className='max-w-full min-h-screen overflow-x-hidden bg-slate-200 text-neutral-800 dark:bg-gray-900 dark:text-neutral-100'>
+        {getLayout(children)}
+      </div>
+    </SSRProvider>
   )
-
-  return ComponentWithApplication
 }
