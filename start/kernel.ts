@@ -8,5 +8,6 @@ Server.middleware.register([
 
 Server.middleware.registerNamed({
   auth: async () => await import('App/Middleware/Auth'),
+  guest: async () => await import('App/Middleware/Guest'),
   inertia: async () => await import('@ioc:EidelLev/Inertia/Middleware'),
 })
