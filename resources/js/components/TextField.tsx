@@ -26,7 +26,7 @@ export const TextField: FC<TextFieldProps> = props => {
 
   return (
     <div className={classNames('flex flex-col gap-0.5 font-input', containerClassName)}>
-      <label {...labelProps} className={classNames('text-neutral-800', labelClassName)}>
+      <label {...labelProps} className={classNames('text-neutral-800 dark:text-neutral-100', labelClassName)}>
         {label}
       </label>
       <input

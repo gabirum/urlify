@@ -1,12 +1,15 @@
 import axios from 'axios'
-import React, { useState } from 'react'
-import { withApplication } from '~/Application'
+import React, { FC, useState } from 'react'
 import { AddressItem } from '~/components/AddressItem'
 import { Button } from '~/components/Button'
 import { Copyable } from '~/components/Copyable'
+import { Header } from '~/components/Header'
 import { TextField } from '~/components/TextField'
+import { PageProps } from '~/types/PageProps'
 
-const Home = () => {
+type HomeProps = PageProps
+
+const Home: FC<HomeProps> = ({ loggedUser }) => {
   const [url, setUrl] = useState('')
   const [shortUrl, setShortUrl] = useState<string | null>(null)
 
@@ -27,10 +30,7 @@ const Home = () => {
       <div className='home relative flex flex-col w-full min-h-screen'>
         <div className='gradient-ball-1' />
         <div className='gradient-ball-2' />
-        <header className='flex justify-between items-center px-8 py-4'>
-          <span className='font-display text-3xl'>URLIFY</span>
-          <Button>logar</Button>
-        </header>
+        <Header user={loggedUser} />
         <main className='flex-1 flex flex-col z-10'>
           <section className='flex-1 flex flex-col justify-center items-center gap-4'>
             <p className='text-6xl font-bold'>Encurte URL&apos;s. Gere QRCodes.</p>
@@ -62,4 +62,4 @@ const Home = () => {
   )
 }
 
-export default withApplication(Home)
+export default Home
